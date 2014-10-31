@@ -12,6 +12,15 @@
 		<input class="form-control" type=text id=InputMessage>
 	</div>
 	<button type=submit value=Send class="btn btn-default">Submit</button>
+	<button type=button onclick="get_random()" class="btn btn-default">Random</button>
 	{% if error %} <div class="error"><strong>Error:</strong> {{ error }}{% endif %}
 </form>
+<script>
+	function get_random() {
+		$.getJSON("/RandomGenerator", function(response) {
+			$("#InputMessage").val(response.adjective + " " + response.noun);
+		}
+		)
+	}
+</script>
 {% endblock %}
