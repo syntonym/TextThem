@@ -10,7 +10,8 @@ function get_random() {
 
 
 function set_text() {
-	$("#InputMessage").val(adjective + noun);
+	$("#InputMessage").val(adjective + " " + noun);
+	get_random();
 }
 
 $(document).ready( function() {
