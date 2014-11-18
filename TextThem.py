@@ -1,4 +1,5 @@
 import os, sys
+import re
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash, jsonify
 from contextlib import closing
@@ -136,8 +137,11 @@ def send_message(data=None):
     source = request.args.get('source')
     anonymous = request.args.get('anonymous')
 
-    
-    
+
+    if len(message) > 141:
+        flash("Your message was too long")
+        return(redirect("."+source))
+
     if(anonymous==None):
         logMessage(number,message)
 
